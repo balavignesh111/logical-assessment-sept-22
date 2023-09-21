@@ -41,7 +41,7 @@ console.log(filterEvenNumbers([1, 2, 3, 4, 5, 6])); // Should return [2, 4, 6]
 console.log(filterEvenNumbers([11, 13, 17, 20])); // Should return [20]
 console.log(filterEvenNumbers([])); // Should return []
 
-/* 14. Write a function capitalizeWords that takes a sentence as input and returns the sentence with
+/* 4. Write a function capitalizeWords that takes a sentence as input and returns the sentence with
 the first letter of each word capitalized. */
 
 function capitalizeWords(sentence) {
@@ -108,6 +108,7 @@ function divideSafely(numerator, denominator) {
   try{
     if(denominator === 0){
       throw new Error('denominator should not be zero!!!')
+
     }else{
       return (numerator / denominator);
     }
@@ -115,6 +116,66 @@ function divideSafely(numerator, denominator) {
     console.log(err);
   }
 }
+
+console.log(`The Answer for the seventh problem is ---->`)
 // Test Cases
 console.log(divideSafely(10, 2)); // Should return 5
 console.log(divideSafely(8, 0)); // Should throw an error
+
+/* 8. Write a function forEach that takes an array and a callback function as arguments and calls the
+callback function for each element in the array. */
+
+function forEach(arr, callback) {
+  arr.forEach((ele)=>{
+    callback(ele);
+  })
+}
+
+// Test Case
+console.log(`The Answer for the eighth problem is ---->`)
+const numbers = [1, 2, 3, 4, 5];
+forEach(numbers, (num) => {
+console.log(num * 2);
+});
+
+
+/* 9. Write an async function fetchData that fetches data from a remote API using fetch. Handle both
+success and error scenarios using promises. */
+
+async function fetchData(url) {
+  // Your code here
+  try{
+    const response = await fetch(url);
+    const result = await response.json();
+    console.log(result);
+  }catch(err){
+    console.log(err);
+  }
+}
+
+// Test Cases
+console.log(`The Answer for the ninth problem is ---->`)
+// success api
+fetchData('https://dog.ceo/api/breeds/image/random');
+
+// failure api
+fetchData('https://api.example.com/data')
+
+
+/* 10. Write a function calculateAverage that calculates the average of an array of numbers using the
+reduce function. */
+
+function calculateAverage(numbers) {
+  if(numbers.length === 0){
+    return NaN;
+  }
+  const val =  numbers.reduce((prev,current)=>{
+    return prev + (current/numbers.length);
+  },0)
+  return val;
+}
+
+console.log(`The Answer for the tenth problem is ---->`)
+console.log(calculateAverage([1, 2, 3, 4, 5])); // Should return 3
+console.log(calculateAverage([10, 20, 30])); // Should return 20
+console.log(calculateAverage([])); // Should return NaN (handle this case)
